@@ -13,6 +13,11 @@ class SWMainTableCellView: NSTableCellView {
     @IBOutlet weak var emailTextField: NSTextField!
     let enterPasswordSheet = SWEnterPasswordWindowController(windowNibName: "SWEnterPasswordWindowController")
 
+    @IBAction func loginiBooks(sender: NSButton) {
+        enterPasswordSheet.loginType = SWLoginType.iBooks
+        commonLogin()
+    }
+    
     @IBAction func loginAppStore(sender: NSButton) {
         enterPasswordSheet.loginType = SWLoginType.AppStore
         commonLogin()

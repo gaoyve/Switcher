@@ -25,7 +25,10 @@ PS. Right click a list item can choose to delete it.
 The app saves your IDs in a local file and everytime you enter the password, for convience, it will save it in the memory(NOT in a local file). So feel free to use this app, it's totally safe. 
 
 ## Known issue
-Certain states of App Store and iTunes App may cause the AppleScript part run to error, but don't worry, click login again, it will work.
+* Certain states of App Store and iTunes App may cause the AppleScript part run to error, but don't worry, click login again, it will work.
+
+
+* Cause the iBooks doesn't support AppleScript, it's not work for iBooks.
 
 <a id="chinese"></a>
 # 中文说明
@@ -48,6 +51,7 @@ PS. 右键点击一个条目可以将它删掉。
 为了使用的方便，应用会在本地储存已经添加的 Apple ID，而且会把密码储存在内存当中。本应用不会以任何方式储存用户的密码，请放心使用。
 
 ## 已知问题
-App Store 和 iTunes 应用的某些状态会导致 AppleScript 部分代码运行出错，不过再登录一次，问题就可以解决。
+* App Store 和 iTunes 应用的某些状态会导致 AppleScript 部分代码运行出错，不过再登录一次，问题就可以解决。
+* iBooks不支持AppleScript，导致iBooks功能无法使用。
 
 

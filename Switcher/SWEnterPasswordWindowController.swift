@@ -10,6 +10,7 @@ import Cocoa
 
 enum SWLoginType {
     case None
+    case iBooks
     case AppStore
     case iTunes
 }
@@ -33,6 +34,8 @@ class SWEnterPasswordWindowController: NSWindowController {
             SWAccountManager.sharedInstance.save(password, with: userName)
             window?.sheetParent?.endSheet(window!, returnCode: NSModalResponseOK)
             switch loginType {
+            case .iBooks:
+                SWAppLoginManager.loginiBooksWith(userName, password: password)
             case .AppStore:
                 SWAppLoginManager.loginAppStoreWith(userName, password: password)
             case .iTunes:

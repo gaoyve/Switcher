@@ -10,6 +10,46 @@ import Foundation
 import AppKit
 
 class SWAppLoginManager {
+    static func loginiBooksWith(appleID: String, password: String) {
+        let appleScript = NSAppleScript(source:
+            "on appIsRunning(appName)\n" +
+                "    tell application \"System Events\" to (name of processes) contains appName\n" +
+                "end appIsRunning\n" +
+                
+                "on startApp(appName)\n" +
+                "    set IsRunning to false\n" +
+                "    set tries to 20\n" +
+                "    repeat until (IsRunning is true or tries is 0)\n" +
+                "        set IsRunning to appIsRunning(appName)\n" +
+                "        set tries to (tries - 1)\n" +
+                "        delay 0.1\n" +
+                "    end repeat\n" +
+                "end startApp\n" +
+                
+                "startApp(\"iTunes\")\n" +
+                
+                "do shell script \"open -a iBooks\"\n" +
+                "tell application \"System Events\" to tell process \"iBooks\" \n" +
+                "    set frontmost to true\n" +
+                "    key code 53\n" +
+                "    try\n" +
+                "        click menu item 7 of menu 1 of menu bar item 7 of menu bar 1\n" +
+                "    end try\n" +
+                "    delay 0.5\n" +
+                "    click menu item 7 of menu 1 of menu bar item 7 of menu bar 1\n" +
+                "    delay 0.2\n" +
+                "    keystroke \"\(appleID)\"\n" +
+                "    keystroke tab\n" +
+                "    keystroke \"\(password)\"\n" +
+                "    keystroke return\n" +
+            "end tell")
+        
+        var errorInfo: NSDictionary? = nil
+        appleScript!.executeAndReturnError(&errorInfo)
+        if let _ = errorInfo {
+            ErrorHanding.showErrorDialog()
+        }
+    }
     static func loginAppStoreWith(appleID: String, password: String) {
         let appleScript = NSAppleScript(source:
             "on appIsRunning(appName)\n" +
